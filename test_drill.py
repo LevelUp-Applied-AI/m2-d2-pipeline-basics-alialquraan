@@ -15,11 +15,22 @@ def test_clean_column():
     # TODO: Call clean_column() on it
     # TODO: Assert no NaN values remain in the result
     # TODO: Assert the NaN was filled with the correct median value
-    pass
-
+   
+    data = pd.Series([1, np.nan, 3]) 
+    
+    result = clean_column(data)
+    
+    assert result.isna().sum() == 0  
+    assert result[1] == 2.0         
 
 def test_compute_revenue():
     # TODO: Create two small pd.Series (quantity and price)
     # TODO: Call compute_revenue() on them
     # TODO: Assert the result matches the expected element-wise product
-    pass
+    quantity = pd.Series([2, 10])
+    price = pd.Series([5, 3])
+    
+    revenue = compute_revenue(quantity, price)
+    
+    expected = pd.Series([10, 30])
+    pd.testing.assert_series_equal(revenue, expected)
