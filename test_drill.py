@@ -21,7 +21,8 @@ def test_clean_column():
     result = clean_column(data)
     
     assert result.isna().sum() == 0  
-    assert result[1] == 2.0         
+    assert result.iloc[1] == 2.0
+
 
 def test_compute_revenue():
     # TODO: Create two small pd.Series (quantity and price)
